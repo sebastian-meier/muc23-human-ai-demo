@@ -24,6 +24,7 @@ public/data/*
 !public/data/use-euclidean-tsne-cluster-50.tsv
 !public/data/use-matrix-cosine-mini.tsv
 !public/data/use-matrix-euclidean-mini.tsv
+!public/data/use-metadata.tsv
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
