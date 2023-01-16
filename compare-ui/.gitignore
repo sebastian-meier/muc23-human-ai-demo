@@ -7,7 +7,23 @@ yarn-error.log*
 lerna-debug.log*
 
 public/data
-public/build
+
+!public/data/use-cosine-cluster.tsv
+!public/data/use-cosine-tsne-5.tsv
+!public/data/use-cosine-tsne-cluster-5.tsv
+!public/data/use-cosine-tsne-20.tsv
+!public/data/use-cosine-tsne-cluster-20.tsv
+!public/data/use-cosine-tsne-50.tsv
+!public/data/use-cosine-tsne-cluster-50.tsv
+!public/data/use-euclidean-cluster.tsv
+!public/data/use-euclidean-tsne-5.tsv
+!public/data/use-euclidean-tsne-cluster-5.tsv
+!public/data/use-euclidean-tsne-20.tsv
+!public/data/use-euclidean-tsne-cluster-20.tsv
+!public/data/use-euclidean-tsne-50.tsv
+!public/data/use-euclidean-tsne-cluster-50.tsv
+!public/data/use-matrix-cosine-mini.tsv
+!public/data/use-matrix-euclidean-mini.tsv
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
