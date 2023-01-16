@@ -8,7 +8,7 @@ let loaded = false;
 export const load = (): void => {
   if (!loaded) {
     loaded = true;
-    fetch("/data/demo-taxonomies.json")
+    fetch("./data/demo-taxonomies.json")
       .then((response) => response.json())
       .then((response) => {
         taxonomies.set(response);

@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   import mapbox from 'mapbox-gl';
   import { v4 as uuid } from 'uuid';
   import {onMount} from 'svelte';

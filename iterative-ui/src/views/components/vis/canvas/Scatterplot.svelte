@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
 	import { onMount } from 'svelte'
 	import { Canvas } from 'svelte-canvas'
 	import { scaleLinear } from 'd3-scale'
@@ -12,7 +12,7 @@
 	let width, height 
 	
 	onMount(() => {
-    fetch("/data/tsne.csv")
+    fetch("./data/tsne.csv")
       .then((data) => data.text())
       .then((data) => {
         points = data.split('\n').map((d) => {

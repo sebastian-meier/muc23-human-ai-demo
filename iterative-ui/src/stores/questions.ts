@@ -13,7 +13,7 @@ let loaded = false;
 export const load = async(): Promise<boolean> => {
   if (!loaded) {
     loaded = true;
-    await fetch('/data/questions.txt')
+    await fetch('./data/questions.txt')
       .then((response) => {
         return response.text();
       })
@@ -39,7 +39,7 @@ export const load = async(): Promise<boolean> => {
           };
         }));
       });
-    await fetch('/data/embeddings.csv')
+    await fetch('./data/embeddings.csv')
       .then((response) => {
         return response.text();
       })
