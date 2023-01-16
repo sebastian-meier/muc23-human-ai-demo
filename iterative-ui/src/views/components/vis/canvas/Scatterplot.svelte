@@ -12,7 +12,7 @@
 	let width, height 
 	
 	onMount(() => {
-    fetch("./data/tsne.csv")
+    fetch("https://media.githubusercontent.com/media/sebastian-meier/chi23-human-ai-demo/main/iterative-ui/public/data/tsne.csv")
       .then((data) => data.text())
       .then((data) => {
         points = data.split('\n').map((d) => {
