@@ -1,0 +1,36 @@
+.datatable-question{
+  .dt-search{
+    margin-left:0 !important;
+    margin-bottom:10px;
+    input {
+      height: 30px !important;
+      border-color: rgba(0,0,0,0.3) !important;
+    }
+  }
+  th {
+    font-weight: 700;
+    text-align:left;
+    padding: 5px;
+    &::after{
+      padding-left:5px;
+    }
+    &.desc::after{
+      content: "\25B4";
+    }
+    &.asc::after{
+      content: "\25BE";
+    }
+    &.asc.desc::after{
+      color:rgba(0,0,0,0.2);
+    }
+  }
+  td{
+    text-align: left;
+    vertical-align: top;
+    padding: 5px;
+  }
+  tr {
+    border-top:1px solid rgba(0,0,0,0.3);
+  }
+}
+

@@ -1,0 +1,15 @@
+.icon{
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  &.medium{
+    width:36px;
+    height:36px;
+  }
+  &.icon-type-point{ background-image: url('assets/images/svg/icon-type-point.svg'); }
+  &.icon-type-tabular{ background-image: url('assets/images/svg/icon-type-tabular.svg'); }
+  &.icon-type-polygon{ background-image: url('assets/images/svg/icon-type-polygon.svg'); }
+  &.icon-type-raster{ background-image: url('assets/images/svg/icon-type-raster.svg'); }
+  &.icon-type-line{ background-image: url('assets/images/svg/icon-type-line.svg'); }
+  &.icon-type-other{ background-image: url('assets/images/svg/icon-type-other.svg'); }
+}

@@ -1,0 +1,14 @@
+@import '../globals/layout.scss';
+
+.sidebar{
+  @include view;
+  max-width: 350px;
+  a.topline{
+    color: $color__accent;
+  }
+  h2 {
+    padding: 5px 0 25px 0;
+  }
+}
+
+

@@ -1,0 +1,26 @@
+@import '../globals/colors';
+@import '../globals/layout';
+@import '../globals/typography';
+
+.search{
+  border-top:1px solid $color__default-brighter;
+  margin:20px -23px;
+  display:block;
+  input {
+    cursor: pointer;
+    display:block;
+    max-width:50%;
+    margin:-22px auto 0 auto;
+    border-radius: $layout__border-radius;
+    @include font__p-small;
+    border: 1px solid $color__default-brighter;
+    outline: none;
+    padding: 10px;
+    &:focus {
+      border-color: $color__default-medium;
+    }
+    &::placeholder {
+      color: $color__default-bright;
+    }
+  }
+}

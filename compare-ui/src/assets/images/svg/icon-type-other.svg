@@ -1,0 +1,21 @@
+<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="36" height="36">
+<rect width="36" height="36" rx="10" fill="#C4C4C4"/>
+</mask>
+<g mask="url(#mask0)">
+<rect width="36" height="36" fill="#D8D9E3"/>
+</g>
+<path d="M24.5 8.5V27.5H11.5V15.2071L18.2071 8.5H24.5Z" stroke="#818394"/>
+<path d="M12.2071 14.5L17.5 9.20711V14.5H12.2071Z" fill="#818394" stroke="#818394"/>
+<line x1="14" y1="17.5" x2="17" y2="17.5" stroke="#818394"/>
+<line x1="14" y1="23.5" x2="20" y2="23.5" stroke="#818394"/>
+<line x1="14" y1="21.5" x2="16" y2="21.5" stroke="#818394"/>
+<line x1="17" y1="21.5" x2="19" y2="21.5" stroke="#818394"/>
+<line x1="20" y1="21.5" x2="22" y2="21.5" stroke="#818394"/>
+<line x1="20" y1="11.5" x2="22" y2="11.5" stroke="#818394"/>
+<line x1="20" y1="15.5" x2="22" y2="15.5" stroke="#818394"/>
+<line x1="21" y1="23.5" x2="22" y2="23.5" stroke="#818394"/>
+<line x1="21" y1="13.5" x2="22" y2="13.5" stroke="#818394"/>
+<line x1="14" y1="19.5" x2="21" y2="19.5" stroke="#818394"/>
+<line x1="18" y1="17.5" x2="22" y2="17.5" stroke="#818394"/>
+</svg>

@@ -1,0 +1,40 @@
+{
+  "result": [
+    {
+      "id": 1,
+      "question": "Waarom geen onderzoek naar thorium kerncentrales als energie alternatief. (In combinatie met gesmolten zout reactor)",
+      "state": "published",
+      "created": "2021-02-19T23:33:12.000Z",
+      "participant_synonym": "Alfred Witts",
+      "has_reply": 0,
+      "taxonomies":[]
+    },
+    {
+      "id": 2,
+      "question": "Eén van de grote onbekenden voor de toekomst: Met hoeveel gaan we zijn op de wereld in 2050, in 2100 en in 2200?",
+      "state": "published",
+      "created": "2021-02-19T23:33:12.000Z",
+      "participant_synonym": "Alfred Witts",
+      "has_reply": 0,
+      "taxonomies":[]
+    },
+    {
+      "id": 3,
+      "question": "Hoe kan de wetenschap er voor zorgen dat er in de toekomst genoeg drinkwater zal zijn?",
+      "state": "published",
+      "created": "2021-02-19T23:33:12.000Z",
+      "participant_synonym": "Conchita Barrera",
+      "has_reply": 0,
+      "taxonomies":[]
+    },
+    {
+      "id": 4,
+      "question": "Hoe kunnen we het weer beter voorspellen?",
+      "state": "published",
+      "created": "2021-02-19T23:33:12.000Z",
+      "participant_synonym": "Clarence Buitron",
+      "has_reply": 0,
+      "taxonomies":[]
+    }
+  ]
+}

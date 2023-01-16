@@ -1,0 +1,52 @@
+
+@import 'colors';
+@import 'typography';
+
+$layout__border-radius: 10px;
+
+@mixin view {
+  background-color: $color__white;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15), 0px 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: $layout__border-radius;
+  padding: 17px 23px;
+  margin:10px;
+}
+
+@mixin button-bright {
+  border-width:0;
+  border-radius: 100px;
+  background-color: $color__accent-brightest;
+  color: $color__accent;
+  cursor: pointer;
+  padding:10px 15px;
+  &:hover {
+    color: $color__accent-brightest;
+    background-color: $color__accent;
+  }
+  &.invert{
+    color: $color__accent-brightest;
+    background-color: $color__accent;
+    &:hover{
+      background-color: $color__accent-brightest;
+      color: $color__accent;
+    }
+  }
+}
+
+@mixin button-bright-small {
+  @include button-bright;
+  padding:6px 12px;
+}
+
+@mixin button-light {
+  text-align:left;
+  background:none;
+  border:none;
+  margin:0;
+  padding:0;
+  cursor: pointer;
+  color:$color__default-bright;
+  &:hover {
+    color: $color__default-medium;
+  }
+}

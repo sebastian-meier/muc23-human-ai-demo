@@ -1,0 +1,145 @@
+.question-list{
+  list-style:none;
+  margin:0 0 30px 0;
+  padding:0;
+
+  flex-wrap: wrap;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  align-content: flex-start;
+  li {
+    flex: calc(50% - 15px);
+    margin: 30px 15px 0 0;
+    list-style:none;
+    &:nth-child(even) {
+      margin: 30px 0 0 15px;
+    }
+
+    &>div:first-child{
+      padding: 15px 20px;
+      border-radius:10px;
+      background-color:rgba(0,0,0,0.05);
+    }
+
+    p {
+      font-weight: 700;
+      font-size: 24px;
+      line-height:1.1em;
+      color: #0d3b61;
+    }
+
+    .meta{
+      padding: 7px 15px;
+    }
+  }
+}
+
+ul.taxonomy-list, ul.taxonomy-list li{
+  margin:0;
+  padding:0;
+  list-style: none;
+}
+
+ul.taxonomy-list li{
+  display:inline-block;
+  background-color:#0d3b61;
+  color: white;
+  border-radius:3px;
+  padding:0 6px;
+  font-size:12px;
+  margin-bottom:4px;
+  font-weight:700;
+}
+
+.question-list, .question-detail{
+  .meta {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.participant, .like{
+  display:flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+.participant .icon{
+  opacity:0.7;
+  background-image: url('../assets/material-icons/face_black_24dp.svg');
+  margin:0px 5px 0 0;
+}
+.like .icon{
+  background-image: url('../assets/material-icons/star_border-24px.svg');
+}
+.like.liked .icon{
+  background-image: url('../assets/material-icons/star-24px.svg');
+}
+
+#list-search{
+  width:100%;
+  margin-bottom:10px;
+}
+
+#list-filters{
+  .radio-field{
+    br{
+      display:none;
+    }
+    padding-bottom:15px;
+  }
+
+  ul, li{
+    margin:0;
+    padding:0;
+    list-style: none;
+  }
+
+  li{
+    display:inline-block;
+    background-color:rgba(0,0,0,0.3);
+    border-radius:3px;
+    padding:0 6px;
+    font-size:12px;
+    margin: 0 4px 4px 0;
+    font-weight:700;
+    &:hover, &.active{
+      background-color:#0d3b61;
+      color: white;
+      cursor: pointer;  
+    }
+  }
+
+  ul{
+    padding-bottom:30px;
+  }
+}
+
+.question-detail{
+  h2{
+    padding-top:40px;
+  }
+  .back-button{
+    margin-top:-20px;
+    margin-bottom:20px;
+    display:inline-block;
+    cursor: pointer;
+  }
+  .meta{
+    padding-top:20px;
+  }
+}
+
+.related-rating-container{
+  padding-bottom:20px;
+  ul, li{
+    list-style: none;
+    margin:0;
+    padding:0;
+  }
+  li{
+    padding-bottom:10px;
+  }
+}

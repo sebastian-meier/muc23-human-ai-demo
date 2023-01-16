@@ -1,0 +1,57 @@
+$font__regular: 400;
+$font__medium: 500;
+$font__semibold: 600;
+$font__bold: 700;
+$font__family: 'Inter', sans-serif;
+
+
+@mixin font__h1 {
+  font-size: 40px;
+  font-weight: $font__bold;
+}
+
+@mixin font__h2 {
+  font-size: 24px;
+  font-weight: $font__bold;
+}
+
+@mixin font__h3 {
+  font-size: 16px;
+  font-weight: $font__bold;
+}
+
+@mixin font__h4 {
+  font-size: 14px;
+  font-weight: $font__semibold;
+}
+
+@mixin font__p-large {
+  font-size: 20px;
+  font-weight: $font__regular;
+}
+
+@mixin font__p {
+  font-size: 16px;
+  font-weight: $font__regular;
+}
+
+@mixin font__p-small {
+  font-size: 14px;
+  font-weight: $font__regular;
+  line-height: 1.5em;
+}
+
+@mixin font__topline {
+  font-size: 10px;
+  font-weight: $font__bold;
+}
+
+@mixin font__ui {
+  font-size: 14px;
+  font-weight: $font__regular;
+}
+
+@mixin font__ui-small {
+  font-size: 12px;
+  font-weight: $font__regular;
+}

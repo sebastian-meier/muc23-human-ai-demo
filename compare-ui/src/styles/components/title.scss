@@ -1,0 +1,39 @@
+h2.title{
+  display:flex;
+  width:100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+  margin-bottom:20px;
+  a {
+    @include font__p;
+    span {display: none;}
+    &.arrow-link{
+      font-weight: $font__bold;
+      color: $color__accent;
+      span{
+        margin-left: 10px;
+        display:inline-block;
+        @include button-bright-small;
+        &::after{
+          content: '';
+          display: inline-block;
+          width: 7px;
+          height: 11px;
+          mask-size: cover;
+          background-color: $color__accent;
+          mask: url('./assets/images/svg/mini-arrow-right.svg');
+        }
+      }
+      &:hover {
+        color: $color__accent-medium;
+        span{
+          background-color: $color__accent;
+          &::after {
+            background-color: $color__white;
+          }
+        }
+      }
+    } 
+  }
+}

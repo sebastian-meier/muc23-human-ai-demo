@@ -1,0 +1,91 @@
+@import '../globals/colors';
+@import '../globals/layout';
+@import '../globals/typography';
+
+.dropdown{
+  position: relative;
+
+  &>span{
+    @include font__topline;
+    color: $color__default-bright;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 20px 0;
+    display:block;
+  }
+
+  &>div>span {
+    white-space: nowrap;
+    border: 1px solid $color__default-brighter;
+    padding: 10px;
+    border-radius: $layout__border-radius;
+    @include font__p-small;
+    color: $color__default-dark;
+    padding-right:35px;
+    background-image:url('./assets/images/svg/arrow-down.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+  }
+
+  &>div {
+    padding-bottom:1rem;
+    cursor: pointer;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    border-radius: $layout__border-radius;
+    border: 1px solid $color__default-brighter;
+    background: white;
+    list-style: none;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5s ease;
+    left: 0;
+    display: none;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15), 0px 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  li{
+    display: block;
+    outline: none;
+    color: $color__default-medium;
+    padding: 0 10px 10px 10px;
+    @include font__p-small;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    cursor: pointer;
+    &:hover {
+      color: $color__default-dark;
+    }
+
+    &:first-child{
+      padding-top:10px;
+    }
+  }
+
+  &:hover > ul,
+  &:focus-within > ul,
+  ul:hover,
+  ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }
+
+  ul li {
+    clear: both;
+    width: 100%;
+  }
+
+  .badge{
+    color: $color__default-bright;
+    @include font__ui-small;
+    padding-left:15px;
+  }  
+}

@@ -1,0 +1,34 @@
+@import-normalize;
+@import 'globals/reset';
+@import 'globals/colors';
+@import 'globals/typography';
+@import 'globals/layout';
+@import 'globals/base';
+@import 'globals/icons';
+
+@import 'components/sidebar';
+@import 'components/steps';
+@import 'components/forms';
+@import 'components/header';
+@import 'components/search';
+@import 'components/dropdown';
+@import 'components/table';
+@import 'components/title';
+@import 'components/loading';
+
+*{
+  box-sizing: border-box;
+}
+
+body {
+  background:$color__accent-max-brightness;
+}
+
+.cluster-indicator{
+  border-radius: 10px;
+  padding: 4px;
+  width: 1px;
+  height: 1px;
+  display: inline-block;
+  line-height:0;
+}
