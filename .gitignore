@@ -1,9 +1,25 @@
-/iterative-ui/public/build/
 .DS_Store
 /iterative-ui/public/.htaccess
 /iterative-ui/public/.htpasswd
 /iterative-ui/public/data/locobss-text-similarity
 /iterative-ui/public/data/*.npy
+
+!/compare-ui/public/data/use-cosine-cluster.tsv
+!/compare-ui/public/data/use-cosine-tsne-5.tsv
+!/compare-ui/public/data/use-cosine-tsne-cluster-5.tsv
+!/compare-ui/public/data/use-cosine-tsne-20.tsv
+!/compare-ui/public/data/use-cosine-tsne-cluster-20.tsv
+!/compare-ui/public/data/use-cosine-tsne-50.tsv
+!/compare-ui/public/data/use-cosine-tsne-cluster-50.tsv
+!/compare-ui/public/data/use-euclidean-cluster.tsv
+!/compare-ui/public/data/use-euclidean-tsne-5.tsv
+!/compare-ui/public/data/use-euclidean-tsne-cluster-5.tsv
+!/compare-ui/public/data/use-euclidean-tsne-20.tsv
+!/compare-ui/public/data/use-euclidean-tsne-cluster-20.tsv
+!/compare-ui/public/data/use-euclidean-tsne-50.tsv
+!/compare-ui/public/data/use-euclidean-tsne-cluster-50.tsv
+!/compare-ui/public/data/use-matrix-cosine-mini.tsv
+!/compare-ui/public/data/use-matrix-euclidean-mini.tsv
 
 .firebase
 firebase.json
@@ -51,6 +67,7 @@ build/Release
 # Dependency directories
 node_modules/
 iterative-ui/node_modules/
+compare-ui/node_modules/
 jspm_packages/
 
 # TypeScript v1 declaration files

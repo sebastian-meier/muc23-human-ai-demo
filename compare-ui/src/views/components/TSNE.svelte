@@ -69,10 +69,10 @@
       positions.forEach((p, pi) => {
         ctx.fillStyle =
           pi < clusters.length && clusters[pi][$selectedCluster] >= 0
-            ? "rgba(255,255,255,0.3)" // color(clusters[pi][$selectedCluster].toString())
+            ? color(clusters[pi][$selectedCluster].toString()) // "rgba(255,255,255,0.3)" // 
             : "rgba(255,255,255,0.3)";
         ctx.beginPath();
-        ctx.arc(x(p), y(p), Math.random() * 5, 0, Math.PI * 2);
+        ctx.arc(x(p), y(p), 1, 0, Math.PI * 2);
         ctx.fill();
       });
     }

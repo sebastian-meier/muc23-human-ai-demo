@@ -1,3 +1,7 @@
+# !!!!!IMPORTANT
+This is a slightly modified version of the original repo to work standalone with no database and static data instead of a database driven backend and no authentication required. Original source: https://github.com/sebastian-meier/LoCobSS-platform
+
+
 This repo is part of the LoCobSS research project. More details about the project and dependencies to other repos can be found [here](https://github.com/sebastian-meier/LoCobSS-documentation).
 
 # LoCobSS-platform
