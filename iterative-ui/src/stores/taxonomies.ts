@@ -8,7 +8,7 @@ let loaded = false;
 export const load = (): void => {
   if (!loaded) {
     loaded = true;
-    fetch("https://media.githubusercontent.com/sebastian-meier/chi23-human-ai-demo/main/iterative-ui/public/data/demo-taxonomies.json")
+    fetch("https://media.githubusercontent.com/media/sebastian-meier/chi23-human-ai-demo/main/iterative-ui/public/data/demo-taxonomies.json")
       .then((response) => response.json())
       .then((response) => {
         taxonomies.set(response);

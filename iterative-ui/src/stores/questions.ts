@@ -13,7 +13,7 @@ let loaded = false;
 export const load = async(): Promise<boolean> => {
   if (!loaded) {
     loaded = true;
-    await fetch('https://media.githubusercontent.com/sebastian-meier/chi23-human-ai-demo/main/iterative-ui/public/data/questions.txt')
+    await fetch('https://media.githubusercontent.com/media/sebastian-meier/chi23-human-ai-demo/main/iterative-ui/public/data/questions.txt')
       .then((response) => {
         return response.text();
       })
@@ -39,7 +39,7 @@ export const load = async(): Promise<boolean> => {
           };
         }));
       });
-    await fetch('https://media.githubusercontent.com/sebastian-meier/chi23-human-ai-demo/main/iterative-ui/public/data/embeddings.csv')
+    await fetch('https://media.githubusercontent.com/media/sebastian-meier/chi23-human-ai-demo/main/iterative-ui/public/data/embeddings.csv')
       .then((response) => {
         return response.text();
       })
