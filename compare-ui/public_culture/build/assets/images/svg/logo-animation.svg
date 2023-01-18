@@ -1,0 +1,108 @@
+<svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes circle-1 {
+      0%{
+        transform: translate(0,0) rotate(0);
+      }
+      10%{
+        transform: translate(0,0) rotate(0);
+      }
+      21%{
+        animation-timing-function: ease-in;
+        transform: translate(0, -1px) rotate(157deg);
+      }
+      32%{
+        animation-timing-function: linear;
+        transform: translate(0, -2px) rotate(315deg);
+      }
+      43%{
+        animation-timing-function: linear;
+        transform: translate(-0.5px, -3px) rotate(472deg);
+      }
+      54%{
+        animation-timing-function: ease-out;
+        transform: translate(-0.5px, -4.4px) rotate(630deg);
+      }
+      64%{
+        animation-timing-function: linear;
+        transform: translate(-0.5px, -4.4px) rotate(630deg);
+      }
+      73%{
+        animation-timing-function: ease-in;
+        transform: translate(-0.5px, -3px) rotate(742deg);
+      }
+      82%{
+        animation-timing-function: linear;
+        transform: translate(0, -2px) rotate(855deg);
+      }
+      91%{
+        animation-timing-function: linear;
+        transform: translate(0, -1px) rotate(967deg);
+      }
+      100%{
+        animation-timing-function: ease-out;
+        transform: translate(0, 0) rotate(1080deg);
+      }
+    }
+
+    @keyframes circle-2 {
+      0%{
+        transform: translate(0,0) rotate(0);
+      }
+      10%{
+        transform: translate(0,0) rotate(0);
+      }
+      21%{
+        animation-timing-function: ease-in;
+        transform: translate(0, 1px) rotate(157deg);
+      }
+      32%{
+        animation-timing-function: linear;
+        transform: translate(0, 2px) rotate(315deg);
+      }
+      43%{
+        animation-timing-function: linear;
+        transform: translate(0.5px, 3px) rotate(472deg);
+      }
+      54%{
+        animation-timing-function: ease-out;
+        transform: translate(0.5px, 4.4px) rotate(630deg);
+      }
+      64%{
+        animation-timing-function: linear;
+        transform: translate(0.5px, 4.4px) rotate(630deg);
+      }
+      73%{
+        animation-timing-function: ease-in;
+        transform: translate(0.5px, 3px) rotate(742deg);
+      }
+      82%{
+        animation-timing-function: linear;
+        transform: translate(0, 2px) rotate(855deg);
+      }
+      91%{
+        animation-timing-function: linear;
+        transform: translate(0, 1px) rotate(967deg);
+      }
+      100%{
+        animation-timing-function: ease-out;
+        transform: translate(0, 0) rotate(1080deg);
+      }
+    }
+
+    #circle-1{
+      animation: circle-1 3s infinite linear;
+      transform-origin: 26px 30px;
+      transform: translate(0,0) rotate(0);
+    }
+
+    #circle-2{
+      animation: circle-2 3s infinite linear;
+      transform-origin: 25px 20px;
+      transform: translate(0,0) rotate(0);
+    }
+  </style>
+  <circle cx="25.5417" cy="25.5417" r="25.5417" fill="#A728FE"/>
+  <path id="circle-1" d="M27.3487 41.0028C32.8775 40.4929 37.2067 35.8422 37.2067 30.1803C37.2067 24.5185 32.8775 19.8678 27.3487 19.3579C26.7923 19.3066 26.3379 19.7645 26.3379 20.3232V40.0375C26.3379 40.5962 26.7923 41.0541 27.3487 41.0028Z" fill="white"/>
+  <path id="circle-2" d="M23.7666 9.16812C18.2378 9.67799 13.9085 14.3287 13.9085 19.9906C13.9085 25.6524 18.2378 30.3031 23.7665 30.813C24.3229 30.8643 24.7773 30.4064 24.7773 29.8477L24.7773 10.1334C24.7773 9.57469 24.3229 9.11681 23.7666 9.16812Z" fill="white"/>
+</svg>  
