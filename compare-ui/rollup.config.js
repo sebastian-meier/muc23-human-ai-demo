@@ -40,7 +40,7 @@ export default {
 		sourcemap: true,
 		format: 'iife',
 		name: 'app',
-		file: 'public/build/bundle.js'
+		file: 'public_culture/build/bundle.js'
 	},
 	plugins: [
 		json(),

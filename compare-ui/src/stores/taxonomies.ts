@@ -117,7 +117,7 @@ export const load: () => Promise<void> = async () => {
       for (let fi = 0; fi < files.length; fi += 1) {
         data[data.length - 1].push(
           await tsvLoader(
-            `https://media.githubusercontent.com/media/sebastian-meier/chi23-human-ai-demo/main/compare-ui/public/data/${pcas[pi] ? pcas[pi] + "_" : ""}${types[ti]}-${
+            `https://media.githubusercontent.com/media/sebastian-meier/chi23-human-ai-demo/main/compare-ui/public_culture/data/${pcas[pi] ? pcas[pi] + "_" : ""}${types[ti]}-${
               files[fi]
             }.tsv`
           )
@@ -126,7 +126,7 @@ export const load: () => Promise<void> = async () => {
     }
   }
 
-  const labelData = await tsvLoader(`https://media.githubusercontent.com/media/sebastian-meier/chi23-human-ai-demo/main/compare-ui/public/data/use-metadata.tsv`);
+  const labelData = await tsvLoader(`https://media.githubusercontent.com/media/sebastian-meier/chi23-human-ai-demo/main/compare-ui/public_culture/data/use-metadata.tsv`);
   labels.set(labelData.map((lines) => lines[0]));
 
   const tempPositions: Positions = [];
