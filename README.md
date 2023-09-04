@@ -8,4 +8,4 @@ Visit the demos:
 - https://muc23.vislab.io/iterative-ui/public
 
 
-https://fhpcloud.fh-potsdam.de/s/Ld8yiRGPDLa6afG/download/muc23-demo.mp4
+![Demo Video](https://fhpcloud.fh-potsdam.de/s/Ld8yiRGPDLa6afG/download/muc23-demo.mp4)
