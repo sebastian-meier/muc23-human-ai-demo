@@ -26,7 +26,9 @@ public_culture/data/*
 !public/data/use-matrix-cosine-mini.tsv
 !public/data/use-matrix-euclidean-mini.tsv
 !public/data/use-metadata.tsv
+!public/data/clusterLabels.json
 
+!public_culture/data/clusterLabels.json
 !public_culture/data/use-cosine-cluster.tsv
 !public_culture/data/use-cosine-tsne-5.tsv
 !public_culture/data/use-cosine-tsne-cluster-5.tsv
