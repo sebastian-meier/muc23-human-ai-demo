@@ -8,4 +8,5 @@ Visit the demos:
 - https://muc23.vislab.io/iterative-ui/public
 
 
-![Demo Video](https://fhpcloud.fh-potsdam.de/s/Ld8yiRGPDLa6afG/download/muc23-demo.mp4)
+https://github.com/sebastian-meier/muc23-human-ai-demo/assets/302789/ae319950-da7f-476a-8139-3b08b83e6118
+
