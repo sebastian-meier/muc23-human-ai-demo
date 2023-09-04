@@ -1,7 +1,13 @@
 <script lang="ts">
   import Button from "./forms/Button.svelte";
+  import {Eye} from 'svelte-bootstrap-icons';
+  import { createEventDispatcher } from 'svelte';
   import { v4 as uuid } from "uuid";
   const id = uuid();
+
+  const dispatch = createEventDispatcher();
+
+  export const onHover = () => {};
 
   export let data: {
     label: string;
@@ -59,6 +65,8 @@
   {#each data as d, index}
     <li
       on:click={(e) => click(e, index, d)}
+      on:mouseover={() => {dispatch('over', d)}}
+      on:mouseout={() => {dispatch('out')}}
       class:active={selection.includes(d.value)}
     >
       <input
@@ -70,6 +78,7 @@
         id="selection-{id}-{index}"
       />
       <label for="selection-{id}-{index}">{@html d.label}</label>
+      <Eye on:click={(e) => {dispatch('setActivePosition', d.value); e.stopPropagation();}} />
     </li>
   {/each}
 </ul>

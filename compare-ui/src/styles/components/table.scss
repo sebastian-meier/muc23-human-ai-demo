@@ -12,16 +12,16 @@ table{
     border-bottom: 1px solid $color__default_brighter;    
   }
   td, th{
-    height:50px;
+    /*height:50px;*/
     border:0;
     text-align: left;
     padding: 6px 10px;
     vertical-align: middle;
     &:first-child{
-      padding-left:20px;
+      padding-left:0px;
     }
     &:last-child {
-      padding-right:20px;
+      padding-right:0px;
     }
     &.clickable {
       cursor: pointer;

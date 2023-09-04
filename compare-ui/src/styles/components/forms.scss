@@ -110,6 +110,7 @@
 
     &>span {
       @include font__p-small;
+      font-size:0.7em;
       transition: color 0.3s ease;
       &.inactive {
         color: $color__default-bright;
@@ -312,5 +313,29 @@
 
 button {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  font-size:0.7em;
+  height: 20px;
+  cursor:pointer;
+}
+
+.title-group button {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.small-form{
+  .form-el label {
+    font-size: 0.75em;
+  }
+  .form-el {
+    padding-bottom:10px;
+  }
+  .form-el select,
+  .form-el input[type=text] {
+    margin-top:10px;
+    font-size:0.75em;
+    border-radius: 5px;
+    padding: 5px;
+  }
 }

@@ -80,6 +80,7 @@
   "dependencies": {
     "@rollup/plugin-terser": "^0.3.0",
     "@turf/bbox": "^6.5.0",
+    "d3-color": "^3.1.0",
     "d3-scale": "^4.0.0",
     "d3-scale-chromatic": "^3.0.0",
     "mapbox-gl": "^2.4.1",

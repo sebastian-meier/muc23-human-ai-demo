@@ -20,6 +20,8 @@
 !compare-ui/public/data/use-euclidean-tsne-cluster-50.tsv
 !compare-ui/public/data/use-matrix-cosine-mini.tsv
 !compare-ui/public/data/use-matrix-euclidean-mini.tsv
+!compare-ui/public/data/clusterLabels.json
+!compare-ui/public_culture/data/clusterLabels.json
 
 .firebase
 firebase.json

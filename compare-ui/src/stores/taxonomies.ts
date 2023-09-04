@@ -51,6 +51,7 @@ export const clusterIds: { [key: number]: number[] } = {
 export const matrixIds = [14, 15];
 
 export const labels: Writable<string[]> = writable([]);
+export const clusterLabels: Writable<ClusterLabels> = writable({});
 export const ready: Writable<boolean> = writable(false);
 export const positions: Writable<Positions> = writable([]);
 // Cluster for vis in small multiples
@@ -59,6 +60,7 @@ export const selection: Writable<number[]> = writable([]);
 export const selectedPosition: Writable<number> = writable(1);
 // Individual cluster within selected Cluster
 export const selectedClusterDetails: Writable<number> = writable(null);
+export const selectedCustomClusterDetails: Writable<number> = writable(null);
 export const selectedMatrix: Writable<number> = writable(0);
 export const matrices: Writable<Matrices> = writable([]);
 export const neighbors: Writable<number[]> = writable([]);
@@ -71,6 +73,9 @@ export type Matrices = number[][][][];
 export type Positions = {
   type: string;
   pca: number;
+  clusterLabels: {
+    [key: number]: string
+  },
   key: string;
   positions: [number, number][];
   clusters: number[][];
@@ -82,6 +87,12 @@ export type Positions = {
   };
 }[];
 
+export type ClusterLabels = {
+  [key: string]: {
+    [key: string]: string
+  }
+}
+
 const tsvLoader = (file: string): Promise<string[][]> => {
   return fetch(file)
     .then((response) => response.text())
@@ -92,6 +103,14 @@ const tsvLoader = (file: string): Promise<string[][]> => {
       }
       const lines = tsv.split("\n");
       return lines.map((line) => line.split("\t"));
+    });
+};
+
+const jsonLoader = (file: string): Promise<{}> => {
+  return fetch(file)
+    .then((response) => response.json())
+    .then((json) => {
+      return json;
     });
 };
 
@@ -128,6 +147,9 @@ export const load: () => Promise<void> = async () => {
 
   const labelData = await tsvLoader(`./data/use-metadata.tsv`);
   labels.set(labelData.map((lines) => lines[0]));
+
+  const tempClusterLabels = await jsonLoader(`./data/clusterLabels.json`);
+  clusterLabels.set(tempClusterLabels);
 
   const tempPositions: Positions = [];
   const tempMatrices: Matrices = [];
@@ -172,6 +194,7 @@ export const load: () => Promise<void> = async () => {
         key: files[id],
         positions: tempCoordinates,
         clusters: tempClusters,
+        clusterLabels: tempClusterLabels[id],
         clusterList: tempClusterLists,
       });
     });

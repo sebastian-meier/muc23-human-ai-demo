@@ -12,6 +12,8 @@
     selectedPosition,
     selectedCluster,
     selectedClusterDetails,
+    selectedCustomClusterDetails,
+    clusterLabels as clusterLabelsData
   } from "../../stores/taxonomies";
   import { taxonomies, taxonomyMap } from "../../stores/custom_taxonomies";
   import TSNE from "../components/TSNE.svelte";
@@ -54,17 +56,40 @@
             $selectedClusterDetails
           );
         })
+      : $ready && $selectedCustomClusterDetails != null
+      ? $taxonomies[$selectedCustomClusterDetails].ids.map((l) => {
+        return {
+          label: $labels[l],
+          value: l
+        };
+      })
       : [];
   let clusterSelection = [];
   let neighborSelection = [];
 
   const setActiveIndex = (index) => {
+    selectedClusterDetails.set(null);
     selectedPosition.set(index);
   };
 
   const setSelectedClusterDetails = (index) => {
     clusterSelection = [];
+    if (index === $selectedClusterDetails) {
+      index = null;
+    } else {
+      selectedCustomClusterDetails.set(null);
+    }
     selectedClusterDetails.set(index);
+  };
+
+  const setSelectedCustomClusterDetails = (index) => {
+    clusterSelection = [];
+    if (index === $selectedCustomClusterDetails) {
+      index = null;
+    } else {
+      selectedClusterDetails.set(null);
+    }
+    selectedCustomClusterDetails.set(index);
   };
 
   let hoverPosition: number = null;
@@ -74,6 +99,7 @@
 
   let activePosition: number = null;
   const setActivePosition = (index) => {
+    console.log(index);
     if (index) {
       activePosition = index;
       selection.set([index]);
@@ -159,9 +185,9 @@
               _selectedCluster
             ].toString()
           )
-        : "#000";
+        : "rgba(150,150,150,1)";
     } else {
-      return pi in _taxonomyMap ? `rgba(${_taxonomies[_taxonomyMap[pi]].color.join(',')})` : 'rgba(255,0,0,1)';
+      return pi in _taxonomyMap ? `rgba(${_taxonomies[_taxonomyMap[pi]].color.join(',')})` : 'rgba(150,150,150,1)';
     }
   };
 
@@ -180,6 +206,23 @@
     Object.keys(refreshTax).forEach(key => {
       $taxonomies[key].ids = refreshTax[key];
     });
+  };
+
+  const saveSingleTaxonomy = () => {
+    if (existingCluster !== null && existingCluster !== '') {
+      const clusterIds = $taxonomies[existingCluster].ids;
+      clusterIds.push(activePosition);
+      $taxonomies[existingCluster].ids = clusterIds;
+    } else {
+      const newTaxonomy: Taxonomy = {
+        name: newClusterName,
+        color: [255,0,0,1],
+        ids: [activePosition]
+      };
+      const tempTaxonomies = $taxonomies;
+      tempTaxonomies.push(newTaxonomy);
+      $taxonomies = tempTaxonomies;
+    }
   };
 
   const saveTaxonomy = () => {
@@ -230,19 +273,32 @@
     editId = id;
     assign = true;
   };
+
+  const removeFromTaxonomy = (taxId: number, ids: number[]) => {
+    const tempIds = $taxonomies[taxId].ids;
+    ids.forEach(id => {
+      const idx = tempIds.indexOf(id);
+      if (idx >= 0) {
+        tempIds.splice(idx, 1);
+      }
+    });
+    $taxonomies[taxId].ids = tempIds;
+  };
 </script>
 
 {#if localReady}
   <div id="taxonomyViews">
     {#each $positions as position, index}
       <TSNE
+        active={$selectedPosition === index ? true : false}
         selected={$selection}
         selectedNeighbors={$neighbors}
         positions={position.positions}
         clusters={position.clusters}
         type={position.type}
         key={position.key}
-        pca={position.pca}
+        clusterMode={clusterMode}
+        color={color}
         {setActiveIndex}
         {index}
       />
@@ -251,11 +307,15 @@
   <div id="editor">
     <div id="clusterView">
       <div>
-        <h2>Clusters</h2>
-        <Button
-          label="Reset cluster selection"
-          on:click={() => setSelectedClusterDetails(null)}
-        />
+        <div class="title-group">
+          <h2>Clusters</h2>
+          {#if $selectedClusterDetails}
+          <Button
+            label="Reset selection"
+            on:click={() => setSelectedClusterDetails(null)}
+          />
+          {/if}
+        </div>
         <ul>
           {#each clusters as cluster, index}
             <li
@@ -267,17 +327,20 @@
                 class="cluster-indicator"
                 style="background-color:{color(cluster.key.toString())}"
               />
-              {cluster.key}&nbsp;<span>{cluster.count}</span>
+              {$positions[$selectedPosition].clusterLabels[cluster.key]}&nbsp;<span>{cluster.count}</span>
             </li>
           {/each}
         </ul>
       </div>
       {#if $selectedClusterDetails != null}
         <div>
-          <h2>Labels in Cluster (<span class="cluster-indicator large" style="background-color:{color($selectedClusterDetails.toString())}"></span>{$selectedClusterDetails})</h2>
+          <h2>Labels in <span class="cluster-indicator large" style="background-color:{color($selectedClusterDetails.toString())}"></span>&nbsp;{$positions[$selectedPosition].clusterLabels[$selectedClusterDetails]}</h2>
           <SelectList
+            on:over={(d) => {setHoverPosition(d.detail.value);}}
+            on:out={() => {setHoverPosition(null);}}
             data={clusterLabels}
             bind:selection={clusterSelection}
+            on:setActivePosition={(e) => {setActivePosition(e.detail);}}
           />
           <Button
             label="Assign to cluster"
@@ -289,20 +352,48 @@
           />
         </div>
       {/if}
+      {#if $selectedCustomClusterDetails != null}
+        <div>
+          <h2>Labels in <span class="cluster-indicator large" style="background-color:rgb({$taxonomies[$selectedCustomClusterDetails].color.join(',')})"></span>&nbsp;{$taxonomies[$selectedCustomClusterDetails].name}</h2>
+          <SelectList
+            on:over={(d) => {setHoverPosition(d.detail.value);}}
+            on:out={() => {setHoverPosition(null);}}
+            data={clusterLabels}
+            bind:selection={clusterSelection}
+          />
+          <Button
+            label="Remove from cluster"
+            on:click={() => {
+              removeFromTaxonomy($selectedCustomClusterDetails, clusterSelection);
+            }}
+          />
+        </div>
+      {/if}
     </div>
     <div id="dataView">
-      <div>
+      <div style="height:32px;">
         <Toggle
             id="distanceToggle"
             labelLeft="ML Cluster"
             labelRight="Custom Cluster"
             bind:checked={clusterMode} />
+        {#if activePosition}
         <Button
           label="Reset selection"
           on:click={() => setActivePosition(null)}
         />
+        {/if}
       </div>
       <svg {width} {height} viewBox="0 0 {width} {height}">
+        <defs>
+          <filter x="0" y="0" width="1" height="1" id="solid">
+            <feFlood flood-color="#f3f7ff" result="bg" />
+            <feMerge>
+              <feMergeNode in="bg"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
         {#each $positions[$selectedPosition].positions as p, pi}
           <circle
             on:mouseover={() => setHoverPosition(pi)}
@@ -310,21 +401,30 @@
             on:click={() => setActivePosition(pi)}
             cx={x(p)}
             cy={y(p)}
-            r="2"
+            r="3"
             fill={colorFunc(pi, $selectedPosition, $selectedCluster, clusterMode, $taxonomies, $taxonomyMap)}
-            class:inactive={$selectedClusterDetails != null &&
+            class:inactive={($selectedClusterDetails != null &&
               $positions[$selectedPosition].clusters[pi][$selectedCluster] !==
-                $selectedClusterDetails}
+                $selectedClusterDetails) || ($selectedCustomClusterDetails !== null &&
+                $selectedCustomClusterDetails !== $taxonomyMap[pi]
+                )}
             class:active={$selectedClusterDetails != null &&
               $positions[$selectedPosition].clusters[pi][$selectedCluster] ===
                 $selectedClusterDetails}
           />
         {/each}
         {#if hoverPosition != null}
+          <circle
+            class="highlighter"
+            cx={x($positions[$selectedPosition].positions[hoverPosition])}
+            cy={y($positions[$selectedPosition].positions[hoverPosition])}
+            r="6"
+          />
           <text
-            transform="translate({x(
+            filter="url(#solid)"
+            transform="translate({8+x(
               $positions[$selectedPosition].positions[hoverPosition]
-            )},{y($positions[$selectedPosition].positions[hoverPosition])})"
+            )},{5+y($positions[$selectedPosition].positions[hoverPosition])})"
             text-anchor="start">{$labels[hoverPosition]}</text
           >
         {/if}
@@ -334,7 +434,7 @@
               class="highlighter"
               cx={x($positions[$selectedPosition].positions[s])}
               cy={y($positions[$selectedPosition].positions[s])}
-              r="5"
+              r="6"
             />
           {/each}
         {/if}
@@ -344,7 +444,7 @@
               class="small-highlighter"
               cx={x($positions[$selectedPosition].positions[s])}
               cy={y($positions[$selectedPosition].positions[s])}
-              r="3"
+              r="4"
             />
           {/each}
         {/if}
@@ -373,9 +473,7 @@
                         $selectedCluster
                       ]
                     )}
-                  >{$positions[$selectedPosition].clusters[$selection[0]][
-                    $selectedCluster
-                  ]}</td>
+                  >{$positions[$selectedPosition].clusterLabels[$positions[$selectedPosition].clusters[$selection[0]][$selectedCluster]]}</td>
               </tr>
             {/if}
             {#if $selection[0] in $taxonomyMap}
@@ -385,12 +483,40 @@
               </tr>
             {/if}
           </table>
+          <hr />
+          <div class="small-form">
+          <Select
+            label="Choose existing cluster"
+            bind:value={existingCluster}
+            values={[{
+              label: 'Create new cluster',
+              value: null,
+            }].concat($taxonomies.map((t, ti) => {
+              return {
+                label: t.name,
+                value: ti,
+              };
+            }))}
+          />
+          <Text
+            label="New cluster name"
+            placeholder="Name"
+            bind:value={newClusterName}
+          />
+          <Button
+            label="Save"
+            bold={true}
+            on:click={saveSingleTaxonomy}
+          />
+        </div>
         </div>
       {/if}
       {#if $selection.length > 0}
         <div>
           <h2>Neighbors</h2>
           <SelectList
+            on:over={(d) => {setHoverPosition(d.detail.value);}}
+            on:out={() => {setHoverPosition(null);}}
             data={$neighbors.map(n => {
               return {
                 label: `<span
@@ -420,15 +546,23 @@
         </div>
       {/if}
       <div id="custom-clusters">
-        <h2>Custom Cluster</h2>
+        <div class="title-group">
+          <h2>Custom Clusters</h2>
+          {#if $selectedCustomClusterDetails}
+          <Button
+            label="Reset selection"
+            on:click={() => setSelectedCustomClusterDetails(null)}
+          />
+          {/if}
+        </div>
         <ul>
           {#each $taxonomies as t, ti}
-            <li>
-              <span>
+            <li class:active={$selectedCustomClusterDetails === ti}>
+              <span on:click={() => {setSelectedCustomClusterDetails(ti)}}>
                 <span
                   class="cluster-indicator"
                   style="background-color:rgba({t.color.join(',')})"
-                />{t.name}
+                />{t.name}<span>{t.ids.length}</span>
               </span>
               <span class="edit-links">
                 <Pencil on:click={() => editTaxonomy(ti)} />
@@ -503,7 +637,7 @@
   }
 
   #editor {
-    height: calc(100vh - 60px);
+    height: calc(100vh - 195px);
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -576,6 +710,9 @@
       text {
         pointer-events: none;
       }
+      circle {
+        cursor: pointer;
+      }
     }
     circle.highlighter {
       pointer-events: none;
@@ -619,6 +756,16 @@
       &:nth-child(odd) {
         background: $color__accent-brightest;
       }
+      &.active {
+        color: white;
+        background: $color__accent;
+        span {
+          color: white;
+          span {
+            color: black
+          }
+        }
+      }
       span span{
         margin-right:5px;
         margin-left:3px;
@@ -639,6 +786,12 @@
       flex-shrink: 1;
       flex-basis: 50%;
     }
+    li > span > span:not(.cluster-indicator) {
+      background-color: $color__accent-bright;
+      border-radius: 10px;
+      padding: 1px 5px;
+      font-weight: normal;
+    }
   }
 
   h2 {
@@ -653,7 +806,22 @@
     display: inline-block;
     line-height:0;
     &.large {
-      padding:8px;
+      padding:6px;
+    }
+  }
+
+  .title-group{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  #dataView>div{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .form-el{
+      padding-bottom:0px;
     }
   }
 </style>

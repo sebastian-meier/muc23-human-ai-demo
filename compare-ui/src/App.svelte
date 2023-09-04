@@ -4,8 +4,8 @@
   import { routes } from "./lib/routes/root";
 </script>
 
-<div class="hasHeader">
-  <Header />
+<div>
+  <!-- class="hasHeader" <Header />-->
   <main>
     <Router {routes} />
   </main>

@@ -32,3 +32,9 @@ body {
   display: inline-block;
   line-height:0;
 }
+
+#dataView>div{
+  .form-el{
+    padding-bottom:0px;
+  }
+}

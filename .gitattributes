@@ -1,3 +1,5 @@
 iterative-ui/public/data/*.* filter=lfs diff=lfs merge=lfs -text
 compare-ui/public/data/*.* filter=lfs diff=lfs merge=lfs -text
 compare-ui/public_culture/data/*.* filter=lfs diff=lfs merge=lfs -text
+compare-ui/public/data/clusterLabels.json filter=lfs diff=lfs merge=lfs -text
+compare-ui/public_culture/data/clusterLabels.json filter=lfs diff=lfs merge=lfs -text
