@@ -5,9 +5,9 @@ Sebastian Meier and Katrin Glinka. 2023. [To Classify is to Interpret: Building 
 
 Visit the demos:
 
-- https://muc23.vislab.io/compare-ui/public
-- https://muc23.vislab.io/compare-ui/public_culture
-- https://muc23.vislab.io/iterative-ui/public
+- https://sebastian-meier.github.io/muc23-human-ai-demo/compare-ui/public
+- https://sebastian-meier.github.io/muc23-human-ai-demo/compare-ui/public_culture
+- https://sebastian-meier.github.io/muc23-human-ai-demo/iterative-ui/public
 
 
 https://github.com/sebastian-meier/muc23-human-ai-demo/assets/302789/ae319950-da7f-476a-8139-3b08b83e6118
